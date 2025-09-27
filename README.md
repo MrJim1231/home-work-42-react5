@@ -66,7 +66,5 @@ my-react-app/
 │   └── index.css
 ├── package.json
 ├── README.md
-└── ... (інші стандартні файли та папки проєкту)
-
-
+└── ...
 ```
