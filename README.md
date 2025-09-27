@@ -1,69 +1,67 @@
-# React + TypeScript + Vite
+# React Users List Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Цей проект демонструє створення компоненту React для отримання та відображення даних користувачів з API з використанням бібліотеки **axios** та стилізації через **Bootstrap**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ⚡ Використані технології
 
-## Expanding the ESLint configuration
+- React 18+
+- TypeScript (опціонально)
+- Axios
+- Bootstrap 5
+- JSONPlaceholder API для тестових даних
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Реалізація завдання
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+У цьому проєкті ми реалізували компонент **DataFetcher** відповідно до вимог завдання:
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+1. **Файл компоненту**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+   - Створено файл `DataFetcher.jsx` у директорії `src/components`.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. **Асинхронний запит**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+   - Використано хук **useEffect** для ініціювання запиту до сервера при першому завантаженні компонента.
+   - Асинхронна функція виконана всередині `useEffect` з використанням **async/await**.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+3. **Axios**
+
+   - Для запиту до API використано бібліотеку **axios** через допоміжну функцію `fetchData`.
+
+4. **Відображення даних**
+
+   - Отримані від сервера дані (інформація про користувачів) відображаються у компоненті.
+   - Кожен користувач представлений у вигляді карточки з ім'ям та email.
+   - Використано адаптивну верстку через **Bootstrap**, щоб вигляд був гармонійним на різних екранах.
+
+5. **Обробка станів**
+
+   - **Стан завантаження** (`isLoading`): поки дані завантажуються, відображається повідомлення «Завантаження даних…» зі спіннером.
+   - **Стан успішного завантаження** (`users`): після отримання даних вони відображаються у вигляді списку користувачів.
+   - **Стан помилки** (`error`): у випадку проблем із запитом, відображається повідомлення про помилку.
+
+6. **Користувацький інтерфейс**
+   - Використано Bootstrap для стилізації елементів.
+   - Карточки користувачів організовані у сітку (`row` + `col`), що забезпечує адаптивність.
+   - Повідомлення про завантаження та помилки центруються та мають відповідне форматування для кращого UX.
+
+---
+
+Таким чином, компонент **DataFetcher** повністю відповідає всім вимогам завдання і демонструє правильне використання React, Axios та обробки станів асинхронного запиту.
+
+## 📂 Структура проекту
+
+```bash
+my-react-app/
+├── src/
+│ ├── components/
+│ │ └── DataFetcher.jsx
+│ ├── App.jsx
+│ ├── main.jsx
+│ └── index.css
+├── package.json
+├── README.md
+└── ...
+
 ```

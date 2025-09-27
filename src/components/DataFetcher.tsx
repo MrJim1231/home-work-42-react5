@@ -25,23 +25,39 @@ const DataFetcher = () => {
   }, []);
 
   if (isLoading) {
-    return <p style={{ color: "green", fontSize: "40px" }}>Loading...</p>;
+    return (
+      <div className="text-center my-5">
+        <div className="spinner-border text-success" role="status">
+          <span className="visually-hidden">Завантаження даних...</span>
+        </div>
+        <p className="mt-3 fs-3 text-success">Завантаження даних...</p>
+      </div>
+    );
   }
 
   if (error) {
-    return <p style={{ color: "red", fontSize: "40px" }}>{error}</p>;
+    return (
+      <div className="text-center my-5">
+        <p className="fs-3 text-danger">{error}</p>
+      </div>
+    );
   }
 
   return (
-    <ul>
-      {users.map((user) => (
-        <li key={user.id}>
-          <h2>{user.name}</h2>
-          <p>{user.email}</p>
-          <hr />
-        </li>
-      ))}
-    </ul>
+    <div className="container my-4">
+      <div className="row">
+        {users.map((user) => (
+          <div key={user.id} className="col-md-6 col-lg-4 mb-4">
+            <div className="card h-100 shadow-sm">
+              <div className="card-body">
+                <h5 className="card-title">{user.name}</h5>
+                <p className="card-text">{user.email}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 
