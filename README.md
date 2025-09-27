@@ -55,13 +55,18 @@
 ```bash
 my-react-app/
 ├── src/
-│ ├── components/
-│ │ └── DataFetcher.jsx
-│ ├── App.jsx
-│ ├── main.jsx
-│ └── index.css
+│   ├── components/
+│   │   └── DataFetcher.jsx
+│   ├── types/
+│   │   └── User.interface.ts
+│   ├── utils/
+│   │   └── api.ts
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
 ├── package.json
 ├── README.md
-└── ...
+└── ... (інші стандартні файли та папки проєкту)
+
 
 ```
